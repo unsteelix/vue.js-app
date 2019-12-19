@@ -1,0 +1,204 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+#app{
+    font-family: 'Roboto', sans-serif;
+    width: 100vw;
+    box-sizing: border-box;
+}
+
+.main-block{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: nowrap;
+    width: 100vw;
+    height: 100%;
+    padding: 3vw;
+    box-sizing: border-box;
+}
+
+.groups{
+    border-top: 1px solid lightslategrey;
+    padding: 0.4vw 0;
+}
+
+.list-group{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+
+    box-sizing: border-box;
+    padding: 3px;
+    height: 325px;
+    width: 1000px;
+}
+
+.one-group{
+    box-sizing: border-box;
+    border: 1px solid lightslategray;
+    margin: 5px 10px;
+    width: 48%;
+
+    -webkit-box-shadow: 1px 2px 5px 0px rgba(50, 50, 50, 0.86);
+    -moz-box-shadow:    1px 2px 5px 0px rgba(50, 50, 50, 0.86);
+    box-shadow:         1px 2px 5px 0px rgba(50, 50, 50, 0.86);
+}
+
+.one-group-title{
+    background-color: lightsteelblue;
+    padding: 5px;
+    font-weight: bold;
+}
+
+
+.products-block{
+
+}
+
+.products-block .products-block-title{
+    font-size: 1.4rem;
+    padding: 0.4vw 0;
+    color: #4a525a;
+}
+
+.list-product{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+
+
+}
+
+.one-product{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+
+    border-bottom: 1px solid grey;
+    cursor: pointer;
+}
+
+.one-product:hover{
+    background-color: gainsboro;
+}
+
+.one-product:last-child{
+    border-bottom: none;
+}
+
+.one-product-title{
+    padding: 3px;
+}
+
+.one-product-count{
+    display: inline-block;
+}
+
+.one-product-price{
+    padding: 3px;
+    text-align: center;
+    background-color: #F4F4F4;
+    min-width: 110px;
+}
+
+.one-product-price.rate-up{
+    background-color: #8fff7b;
+    color: #272727;
+}
+
+.one-product-price.rate-down{
+    background-color: #ff5252;
+    color: #ffffff;
+}
+
+
+
+.dollar-rate-block{
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid gainsboro;
+}
+
+.dollar-rate-input{
+    width: 60px;
+}
+
+
+
+
+.basket-block{
+
+}
+
+.basket-block .basket-title{
+    font-size: 1.4rem;
+    padding: 0.4vw 0;    
+    color: #4a525a;
+}
+
+.basket-products{
+    border-top: 1px solid lightslategrey;
+    padding: 0.4vw 0;
+}
+
+.basket-total{
+    font-size: 1.3rem;
+}
+
+.basket-total .price{
+    color: #416fab;
+}
+
+
+
+.one-basket-product{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+
+    margin: 0.6vw 0;
+    color: #2d2d2d;
+    border-bottom: 1px solid #969696;
+}
+
+.one-basket-product.header{
+    padding: 0.4vw 0;
+    font-weight: bold;
+}
+
+.one-basket-product-title{
+    width: 400px;
+}
+
+.one-basket-product-count{
+    width: 55px;
+    box-sizing: border-box;
+}
+
+.one-basket-product-count input{
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.one-basket-product-available{
+    width: 50px;
+    text-align: center;
+}
+
+.one-basket-product-price{
+    width: 140px;
+    text-align: center;
+}
+
+.one-basket-product-delete{
+    width: 80px;
+    cursor: pointer;
+}
+
+.one-basket-product-delete:hover{
+    color: black;
+}

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>App</title>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/main.css" />
+  </head>
+<body>
+
+    <div id="app">
+
+        <div class="dollar-rate-block">
+            Курс доллара:
+            <input type="number" v-model="dollarRate" v-on:change="changeRate" class="dollar-rate-input">
+            руб.
+        </div>
+
+        <div class="main-block">
+
+            <div class="products-block">
+                <div class="products-block-title">Товары</div>
+                <groups :groups="productGroups" :rate="dollarRate"></groups>
+            </div>
+            
+            <div class="basket-block">
+                <div class="basket-title">Корзина</div>
+                <basket-products :products="basket" :rate="dollarRate"></basket-products>       
+            </div>
+
+        </div>
+    </div>
+
+    <!--  список групп товаров  -->
+    <script type="text/x-template" id="groups-template">
+      <div class="groups">
+        <div class="list-group">
+            <one-group v-for="(group, key) in groups" v-bind:key="key" :group="group" :rate="rate"></one-group>
+        </div>
+      </div>
+    </script>
+
+
+    <!--  список товаров  -->
+    <script type="text/x-template" id="products-template">
+      <div class="products">
+        <div class="list-product">
+          <one-product v-for="(product, key) in products" v-bind:key="key" v-if="product.show" :product="product" :rate="rate" :groupTitle="groupTitle"></one-product>
+        </div>
+      </div>
+    </script>
+
+    <!--  отдельная группа  -->
+    <script type="text/x-template" id="one-group-template">
+      <div class="one-group">
+        <div class="one-group-title">{{ group.G }}</div>
+        <products :products="group.B" :rate="rate" :groupTitle="group.G"></products>
+      </div>
+    </script>
+
+    <!--  отдельный товар  -->
+    <script type="text/x-template" id="one-product-template">
+      <div class="one-product" v-on:click="addToBasket">
+        <div class="one-product-title">
+            {{ product.N }}
+            <div class="one-product-count">({{ product.count }})</div>
+        </div>
+        <div class="one-product-price" v-bind:class="{ 'rate-up': (changeRate == 'up'), 'rate-down': (changeRate == 'down') }"  >{{ priceRub }}р ({{ product.price }}$)</div>
+      </div>
+    </script>
+
+    <!--  список товаров в корзине  -->
+    <script type="text/x-template" id="basket-products-template">
+      <div class="basket-products">
+        <div class="list-basket-product">
+          <div class="one-basket-product header">
+            <div class="one-basket-product-title">Наименование товара и описание</div>
+            <div class="one-basket-product-count">Кол-вл</div>
+            <div class="one-basket-product-available">В нал.</div>
+            <div class="one-basket-product-price">Цена (р)</div>
+            <div class="one-basket-product-delete"></div>
+          </div>
+          <one-basket-product v-for="(product, key) of products" v-bind:key="product.id" :product="product" :rate="rate" :index="key" :products="products"></one-basket-product>
+        </div>
+        <div class="basket-total">
+            Всего: <span class="price">{{ total }} руб.</span>
+        </div>
+      </div>
+    </script>
+
+    <!--  отдельный товар в корзине  -->
+    <script type="text/x-template" id="one-basket-product-template">
+      <div class="one-basket-product">
+
+        <div class="one-basket-product-title">
+            {{ product.groupTitle }}{{ product.N }}
+        </div>
+
+        <div class="one-basket-product-count">
+          <input type="number" v-model="product.countSelected" ref="countSelectedRef" min="1" :max="product.count" >
+        </div>
+
+        <div class="one-basket-product-available">{{ product.count }}</div>
+
+        <div class="one-basket-product-price">{{ totalPriceRub }} / {{ priceRub }} 1шт </div>
+        
+        <div class="one-basket-product-delete" v-on:click="deleteFromBasket()">Удалить</div>
+
+      </div>
+    </script>
+
+
+    <!--<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>-->
+    <script src="js/vue.min.js"></script>
+
+    <script src="js/data/data.js"></script>
+    <script src="js/data/names.js"></script>
+    <script src="js/components.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
